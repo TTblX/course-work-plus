@@ -11,6 +11,7 @@ Data::~Data() {
 
 }
 
+
 const Name &Data::getName() const {
     return name;
 }
