@@ -20,7 +20,7 @@ int TableModel::rowCount(const QModelIndex &parent) const
 
 int TableModel::columnCount(const QModelIndex &parent) const
 {
-    return parent.isValid() ? 0 : 3;
+    return parent.isValid() ? 0 : 4;
 }
 //! [1]
 
@@ -33,19 +33,53 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
     if (index.row() >= contacts.size() || index.row() < 0)
         return QVariant();
 
-    if (role == Qt::DisplayRole) {
-        const auto &contact = contacts.at(index.row());
+//    if (role == Qt::DisplayRole) {
+//        const auto &contact = contacts.at(index.row());
 
-        switch (index.column()) {
-            case 0:
-                return contact.name;
-            case 1:
-                return contact.address;
-            case 2:
-                return contact.email;
-            default:
-                break;
-        }
+//        switch (index.column()) {
+//            case 0:
+//                return contact.name;
+//            case 1:
+//                return contact.address;
+//            case 2:
+//                return contact.email;
+//            case 3:
+//                return contact.picturePath;
+//            default:
+//                break;
+//        }
+//    }
+
+    const auto &contact = contacts.at(index.row());
+    QString filename = contact.picturePath;
+
+    QPixmap pixmap ;
+    pixmap.load(filename);
+
+    switch (index.column()) {
+        case 0:
+            if (role == Qt::DisplayRole) return contact.name;
+            break;
+        case 1:
+            if (role == Qt::DisplayRole) return contact.address;
+            break;
+        case 2:
+            if (role == Qt::DisplayRole) return contact.email;
+            break;
+        case 3:
+            if(role == Qt::DisplayRole )
+            {
+                return filename;
+            }
+
+            if (role == Qt::ToolTipRole)
+            {
+                // find path for specified index
+                return QString("<img src='%1'>").arg(filename);
+            }
+            break;
+        default:
+            break;
     }
     return QVariant();
 }
@@ -65,6 +99,8 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
                 return tr("Address");
             case 2:
                 return tr("Email");
+            case 3:
+                return tr("Photo");
             default:
                 break;
         }
@@ -80,7 +116,7 @@ bool TableModel:: insertRows(int position, int rows, const QModelIndex &index)
     beginInsertRows(QModelIndex(), position, position + rows - 1);
 
     for (int row = 0; row < rows; ++row)
-        contacts.insert(position, { QString(), QString() , QString()});
+        contacts.insert(position, { QString(), QString() , QString(), QString()});
 
     endInsertRows();
     return true;
@@ -118,11 +154,14 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
             case 2:
                 contact.email = value.toString();
                 break;
+            case 3:
+                contact.picturePath = value.toString();
+                break;
             default:
                 return false;
         }
         contacts.replace(row, contact);
-        emit dataChanged(index, index, {Qt::DisplayRole, Qt::EditRole, Qt::EditRole});
+        emit dataChanged(index, index, {Qt::DisplayRole, Qt::EditRole, Qt::EditRole, Qt::EditRole});
 
         return true;
     }

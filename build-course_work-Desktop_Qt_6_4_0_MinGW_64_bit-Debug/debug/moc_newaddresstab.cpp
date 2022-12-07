@@ -26,14 +26,15 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_NewAddressTab_t {
-    uint offsetsAndSizes[14];
+    uint offsetsAndSizes[16];
     char stringdata0[14];
     char stringdata1[12];
     char stringdata2[1];
     char stringdata3[5];
     char stringdata4[8];
     char stringdata5[6];
-    char stringdata6[9];
+    char stringdata6[12];
+    char stringdata7[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_NewAddressTab_t::offsetsAndSizes) + ofs), len 
@@ -45,7 +46,8 @@ Q_CONSTINIT static const qt_meta_stringdata_NewAddressTab_t qt_meta_stringdata_N
         QT_MOC_LITERAL(27, 4),  // "name"
         QT_MOC_LITERAL(32, 7),  // "address"
         QT_MOC_LITERAL(40, 5),  // "email"
-        QT_MOC_LITERAL(46, 8)   // "addEntry"
+        QT_MOC_LITERAL(46, 11),  // "picturePath"
+        QT_MOC_LITERAL(58, 8)   // "addEntry"
     },
     "NewAddressTab",
     "sendDetails",
@@ -53,6 +55,7 @@ Q_CONSTINIT static const qt_meta_stringdata_NewAddressTab_t qt_meta_stringdata_N
     "name",
     "address",
     "email",
+    "picturePath",
     "addEntry"
 };
 #undef QT_MOC_LITERAL
@@ -72,13 +75,13 @@ Q_CONSTINIT static const uint qt_meta_data_NewAddressTab[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,   26,    2, 0x06,    1 /* Public */,
+       1,    4,   26,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       6,    0,   33,    2, 0x0a,    5 /* Public */,
+       7,    0,   35,    2, 0x0a,    6 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,    3,    4,    5,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,    3,    4,    5,    6,
 
  // slots: parameters
     QMetaType::Void,
@@ -100,6 +103,7 @@ Q_CONSTINIT const QMetaObject NewAddressTab::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'addEntry'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
@@ -112,14 +116,14 @@ void NewAddressTab::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         auto *_t = static_cast<NewAddressTab *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->sendDetails((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 0: _t->sendDetails((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
         case 1: _t->addEntry(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (NewAddressTab::*)(const QString & , const QString & , const QString & );
+            using _t = void (NewAddressTab::*)(const QString & , const QString & , const QString & , const QString & );
             if (_t _q_method = &NewAddressTab::sendDetails; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -159,9 +163,9 @@ int NewAddressTab::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void NewAddressTab::sendDetails(const QString & _t1, const QString & _t2, const QString & _t3)
+void NewAddressTab::sendDetails(const QString & _t1, const QString & _t2, const QString & _t3, const QString & _t4)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP

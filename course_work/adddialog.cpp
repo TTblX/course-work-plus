@@ -12,6 +12,7 @@ AddDialog::AddDialog(QWidget *parent)
     auto nameLabel = new QLabel(tr("Name"));
     auto addressLabel = new QLabel(tr("Address"));
     auto emailLabel = new QLabel(tr("Email"));
+    auto pictureButton = new QPushButton(tr("Choose Picture"));
     auto okButton = new QPushButton(tr("OK"));
     auto cancelButton = new QPushButton(tr("Cancel"));
 
@@ -26,6 +27,9 @@ AddDialog::AddDialog(QWidget *parent)
     gLayout->addWidget(emailLabel, 2, 0);
     gLayout->addWidget(emailText, 2, 1);
 
+    gLayout->addWidget(pictureButton, 3, 0);
+    //gLayout->addWidget(picture, 3, 1);
+
     auto buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(okButton);
     buttonLayout->addWidget(cancelButton);
@@ -38,6 +42,7 @@ AddDialog::AddDialog(QWidget *parent)
 
     connect(okButton, &QAbstractButton::clicked, this, &QDialog::accept);
     connect(cancelButton, &QAbstractButton::clicked, this, &QDialog::reject);
+    connect(pictureButton ,&QAbstractButton::clicked, this, &AddDialog::addPicture);
 
     setWindowTitle(tr("Add a Contact"));
 }
@@ -57,11 +62,24 @@ QString AddDialog::email() const
     return emailText->text();
 }
 
-void AddDialog::editAddress(const QString &name, const QString &address, const QString &email)
+QString AddDialog::getPicturePath() const
+{
+    return picturePath;
+}
+void AddDialog::editAddress(const QString &name, const QString &address, const QString &email, const QString &picturePath)
 {
     nameText->setReadOnly(true);
     nameText->setText(name);
     addressText->setText(address);
     emailText->setText(email);
+}
+
+void AddDialog::addPicture()
+{
+    QString fileName = QFileDialog::getSaveFileName(this);
+    if (!fileName.isEmpty())
+    {
+        picturePath = fileName;
+    }
 }
 //! [0]

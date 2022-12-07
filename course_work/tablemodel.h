@@ -3,6 +3,7 @@
 
 #include <QAbstractTableModel>
 #include <QList>
+#include<QPixmap>
 
 //! [0]
 
@@ -11,22 +12,22 @@ struct Contact
     QString name;
     QString address;
     QString email;
-    QString picture;
+    QString picturePath;
 
     bool operator==(const Contact &other) const
     {
-        return name == other.name && address == other.address && email == other.email && picture == other.picture;
+        return name == other.name && address == other.address && email == other.email && picturePath == other.picturePath;
     }
 };
 
 inline QDataStream &operator<<(QDataStream &stream, const Contact &contact)
 {
-    return stream << contact.name << contact.address << contact.email;
+    return stream << contact.name << contact.address << contact.email << contact.picturePath;
 }
 
 inline QDataStream &operator>>(QDataStream &stream, Contact &contact)
 {
-    return stream >> contact.name >> contact.address >> contact.email;
+    return stream >> contact.name >> contact.address >> contact.email >> contact.picturePath;
 }
 
 class TableModel : public QAbstractTableModel

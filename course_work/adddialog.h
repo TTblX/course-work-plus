@@ -21,12 +21,18 @@ public:
     QString name() const;
     QString address() const;
     QString email() const;
-    void editAddress(const QString &name, const QString &address, const QString &email);
+    QString getPicturePath() const;
+    void editAddress(const QString &name, const QString &address, const QString &email, const QString &picturePath);
 
 private:
     QLineEdit *nameText;
     QLineEdit *addressText;
     QLineEdit *emailText;
+    QString picturePath;
+    QPushButton *pictureButton;
+
+private slots:
+    void addPicture();
 };
 //! [0]
 

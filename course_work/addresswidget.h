@@ -24,7 +24,7 @@ public:
 
 public slots:
     void showAddEntryDialog();
-    void addEntry(const QString &name, const QString &address, const QString &email);
+    void addEntry(const QString &name, const QString &address, const QString &email, const  QString &picturePath);
     void editEntry();
     void removeEntry();
 

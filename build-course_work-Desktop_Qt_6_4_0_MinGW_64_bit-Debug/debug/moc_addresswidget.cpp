@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_AddressWidget_t {
-    uint offsetsAndSizes[24];
+    uint offsetsAndSizes[26];
     char stringdata0[14];
     char stringdata1[17];
     char stringdata2[1];
@@ -37,8 +37,9 @@ struct qt_meta_stringdata_AddressWidget_t {
     char stringdata7[5];
     char stringdata8[8];
     char stringdata9[6];
-    char stringdata10[10];
-    char stringdata11[12];
+    char stringdata10[12];
+    char stringdata11[10];
+    char stringdata12[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_AddressWidget_t::offsetsAndSizes) + ofs), len 
@@ -54,8 +55,9 @@ Q_CONSTINIT static const qt_meta_stringdata_AddressWidget_t qt_meta_stringdata_A
         QT_MOC_LITERAL(84, 4),  // "name"
         QT_MOC_LITERAL(89, 7),  // "address"
         QT_MOC_LITERAL(97, 5),  // "email"
-        QT_MOC_LITERAL(103, 9),  // "editEntry"
-        QT_MOC_LITERAL(113, 11)   // "removeEntry"
+        QT_MOC_LITERAL(103, 11),  // "picturePath"
+        QT_MOC_LITERAL(115, 9),  // "editEntry"
+        QT_MOC_LITERAL(125, 11)   // "removeEntry"
     },
     "AddressWidget",
     "selectionChanged",
@@ -67,6 +69,7 @@ Q_CONSTINIT static const qt_meta_stringdata_AddressWidget_t qt_meta_stringdata_A
     "name",
     "address",
     "email",
+    "picturePath",
     "editEntry",
     "removeEntry"
 };
@@ -91,16 +94,16 @@ Q_CONSTINIT static const uint qt_meta_data_AddressWidget[] = {
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
        5,    0,   47,    2, 0x0a,    3 /* Public */,
-       6,    3,   48,    2, 0x0a,    4 /* Public */,
-      10,    0,   55,    2, 0x0a,    8 /* Public */,
-      11,    0,   56,    2, 0x0a,    9 /* Public */,
+       6,    4,   48,    2, 0x0a,    4 /* Public */,
+      11,    0,   57,    2, 0x0a,    9 /* Public */,
+      12,    0,   58,    2, 0x0a,   10 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString,    7,    8,    9,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,    7,    8,    9,   10,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -126,6 +129,7 @@ Q_CONSTINIT const QMetaObject AddressWidget::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'editEntry'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'removeEntry'
@@ -142,7 +146,7 @@ void AddressWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         switch (_id) {
         case 0: _t->selectionChanged((*reinterpret_cast< std::add_pointer_t<QItemSelection>>(_a[1]))); break;
         case 1: _t->showAddEntryDialog(); break;
-        case 2: _t->addEntry((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 2: _t->addEntry((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
         case 3: _t->editEntry(); break;
         case 4: _t->removeEntry(); break;
         default: ;

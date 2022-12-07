@@ -21,7 +21,7 @@ public slots:
     void addEntry();
 
 signals:
-    void sendDetails(const QString &name, const QString &address, const QString &email);
+    void sendDetails(const QString &name, const QString &address, const QString &email, const QString &picturePath);
 };
 //! [0]
 

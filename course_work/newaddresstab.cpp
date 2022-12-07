@@ -28,6 +28,6 @@ void NewAddressTab::addEntry()
     AddDialog aDialog;
 
     if (aDialog.exec())
-        emit sendDetails(aDialog.name(), aDialog.address(), aDialog.email());
+        emit sendDetails(aDialog.name(), aDialog.address(), aDialog.email(), aDialog.getPicturePath());
 }
 //! [1]
