@@ -76,7 +76,7 @@ void AddDialog::editAddress(const QString &name, const QString &address, const Q
 
 void AddDialog::addPicture()
 {
-    QString fileName = QFileDialog::getSaveFileName(this);
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Choose picture"), "/", tr("Images (*.png *.xpm *.jpg)"), nullptr,  QFileDialog::DontConfirmOverwrite);
     if (!fileName.isEmpty())
     {
         picturePath = fileName;
