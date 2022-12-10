@@ -7,12 +7,15 @@
 AddressWidget::AddressWidget(QWidget *parent)
     : QTabWidget(parent),
       table(new TableModel(this)),
-      newAddressTab(new NewAddressTab(this))
+      newAddressTab(new NewAddressTab(this)),
+      findTab(new FindTab(this))
 {
     connect(newAddressTab, &NewAddressTab::sendDetails,
         this, &AddressWidget::addEntry);
 
     addTab(newAddressTab, tr("Address Book"));
+
+    //AddressWidget::setTabsClosable(true);
 
     setupTabs();
 }
@@ -52,6 +55,110 @@ void AddressWidget::addEntry(const QString &name, const QString &address, const 
     }
 }
 //! [3]
+
+void AddressWidget::findEntry()
+{
+
+    FindDialog fDialog;
+    TableModel *tmpModel;
+
+    if(fDialog.exec())
+    {
+
+//        auto proxyModel = new QSortFilterProxyModel(this);
+//        proxyModel->setSourceModel(table);
+
+//        if(fDialog.name() != "" && fDialog.name() != nullptr)
+//        {
+//            const auto regExp1 = QRegularExpression(QLatin1StringView("^[%1].*").arg(fDialog.name()),
+//                                                            QRegularExpression::CaseInsensitiveOption);
+//            proxyModel->setFilterRegularExpression(regExp1);
+//            proxyModel->setFilterKeyColumn(0);
+//        }
+
+//        if(fDialog.address() != "" && fDialog.address() != nullptr)
+//        {
+//            const auto regExp2 = QRegularExpression(QLatin1StringView("^[%1].*").arg(fDialog.address()),
+//                                                            QRegularExpression::CaseInsensitiveOption);
+//            proxyModel->setFilterRegularExpression(regExp2);
+//            proxyModel->setFilterKeyColumn(1);
+//        }
+
+//        if(fDialog.email() != "" && fDialog.email() != nullptr)
+//        {
+//            const auto regExp3 = QRegularExpression(QLatin1StringView("^[%1].*").arg(fDialog.email()),
+//                                                            QRegularExpression::CaseInsensitiveOption);
+
+//            proxyModel->setFilterRegularExpression(regExp3);
+//            proxyModel->setFilterKeyColumn(2);
+//        }
+
+        auto nameProxyModel = new QSortFilterProxyModel(this);
+        nameProxyModel->setSourceModel(table);
+        auto addressProxyModel = new QSortFilterProxyModel(this);
+        addressProxyModel->setSourceModel(table);
+        auto emailProxyModel = new QSortFilterProxyModel(this);
+        emailProxyModel->setSourceModel(table);
+
+        if(fDialog.name() != "" && fDialog.name() != nullptr)
+        {
+            const auto regExp = QRegularExpression(QLatin1StringView("[%1].*").arg(fDialog.name()),
+                                                QRegularExpression::CaseInsensitiveOption);
+
+            nameProxyModel->setFilterRegularExpression(regExp);
+            nameProxyModel->setFilterKeyColumn(0);
+
+            addressProxyModel->setSourceModel(nameProxyModel);
+            emailProxyModel->setSourceModel(nameProxyModel);
+        }
+
+        if(fDialog.address() != "" && fDialog.address() != nullptr)
+        {
+            const auto regExp = QRegularExpression(QLatin1StringView("[%1].*").arg(fDialog.address()),
+                                                QRegularExpression::CaseInsensitiveOption);
+
+            addressProxyModel->setFilterRegularExpression(regExp);
+            addressProxyModel->setFilterKeyColumn(1);
+
+            emailProxyModel->setSourceModel(addressProxyModel);
+        }
+
+        if(fDialog.email() != "" && fDialog.email() != nullptr)
+        {
+            const auto regExp = QRegularExpression(QLatin1StringView("[%1].*").arg(fDialog.email()),
+                                                QRegularExpression::CaseInsensitiveOption);
+
+            emailProxyModel->setFilterRegularExpression(regExp);
+            emailProxyModel->setFilterKeyColumn(2);
+        }
+
+        QTableView *tableView  = new QTableView;
+        tableView->setModel(emailProxyModel);
+        tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+        tableView->horizontalHeader()->setStretchLastSection(true);
+        tableView->verticalHeader()->hide();
+        tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        tableView->setSortingEnabled(true);
+
+        connect(tableView->selectionModel(), &QItemSelectionModel::selectionChanged,
+                 this, &AddressWidget::selectionChanged);
+
+       connect(this, &QTabWidget::currentChanged, this, [this, tableView](int tabIndex) {
+           if (widget(tabIndex) == tableView)
+               emit selectionChanged(tableView->selectionModel()->selection());
+       });
+
+
+//       if()
+//       {
+
+//       }
+        addTab(tableView, tr("Search Result"));
+        setCurrentWidget(tableView);
+
+    }
+}
 
 //! [4a]
 void AddressWidget::editEntry()

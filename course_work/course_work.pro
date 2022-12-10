@@ -11,6 +11,8 @@ CONFIG += c++17
 SOURCES += \
     adddialog.cpp \
     addresswidget.cpp \
+    finddialog.cpp \
+    findtab.cpp \
     main.cpp \
     mainwindow.cpp \
     newaddresstab.cpp \
@@ -19,6 +21,8 @@ SOURCES += \
 HEADERS += \
     adddialog.h \
     addresswidget.h \
+    finddialog.h \
+    findtab.h \
     mainwindow.h \
     newaddresstab.h \
     tablemodel.h

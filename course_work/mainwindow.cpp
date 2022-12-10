@@ -42,11 +42,15 @@ void MainWindow::createMenus()
     connect(addAct, &QAction::triggered,
             addressWidget, &AddressWidget::showAddEntryDialog);
 
+    QAction *findAct = new QAction(tr("&Find Entry..."), this);
+    toolMenu->addAction(findAct);
+    connect(findAct, &QAction::triggered, addressWidget, &AddressWidget::findEntry);
+
 //! [1b]
     editAct = new QAction(tr("&Edit Entry..."), this);
     editAct->setEnabled(false);
     toolMenu->addAction(editAct);
-    connect(editAct, &QAction::triggered, addressWidget, &AddressWidget::editEntry);
+    connect(editAct, &QAction::triggered, addressWidget, &AddressWidget::editEntry);    
 
     toolMenu->addSeparator();
 

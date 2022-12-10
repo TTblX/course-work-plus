@@ -66,7 +66,7 @@ QString AddDialog::getPicturePath() const
 {
     return picturePath;
 }
-void AddDialog::editAddress(const QString &name, const QString &address, const QString &email, const QString &picturePath)
+void AddDialog:: editAddress(const QString &name, const QString &address, const QString &email, const QString &picturePath)
 {
     nameText->setReadOnly(true);
     nameText->setText(name);

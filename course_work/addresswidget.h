@@ -3,6 +3,8 @@
 
 #include "newaddresstab.h"
 #include "tablemodel.h"
+#include "finddialog.h"
+#include"findtab.h"
 
 #include <QItemSelection>
 #include <QTabWidget>
@@ -26,6 +28,7 @@ public slots:
     void showAddEntryDialog();
     void addEntry(const QString &name, const QString &address, const QString &email, const  QString &picturePath);
     void editEntry();
+    void findEntry();
     void removeEntry();
 
 signals:
@@ -36,6 +39,7 @@ private:
 
     TableModel *table;
     NewAddressTab *newAddressTab;
+    FindTab* findTab;
 };
 //! [0]
 

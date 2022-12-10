@@ -44,8 +44,8 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
-    bool insertRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;
-    bool removeRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;
+    bool insertRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;    
+    bool removeRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;    
     const QList<Contact> &getContacts() const;
 
 private:
