@@ -13,6 +13,7 @@ AddressWidget::AddressWidget(QWidget *parent)
     connect(newAddressTab, &NewAddressTab::sendDetails,
         this, &AddressWidget::addEntry);
 
+    connect(this->tabBar(), &QTabBar::tabCloseRequested, this->tabBar(), &QTabBar::removeTab);
     addTab(newAddressTab, tr("Address Book"));
 
     AddressWidget::setTabsClosable(true);
@@ -294,6 +295,7 @@ void AddressWidget::setupTabs()
    });
 
    addTab(tableView, "ALL");
+   this->tabBar()->tabButton(1, QTabBar::RightSide)->resize(0,0);
 }
 //! [1]
 
