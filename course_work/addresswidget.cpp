@@ -15,7 +15,7 @@ AddressWidget::AddressWidget(QWidget *parent)
 
     addTab(newAddressTab, tr("Address Book"));
 
-    //AddressWidget::setTabsClosable(true);
+    AddressWidget::setTabsClosable(true);
 
     setupTabs();
 }
@@ -60,7 +60,6 @@ void AddressWidget::findEntry()
 {
 
     FindDialog fDialog;
-    TableModel *tmpModel;
 
     if(fDialog.exec())
     {
@@ -102,7 +101,7 @@ void AddressWidget::findEntry()
 
         if(fDialog.name() != "" && fDialog.name() != nullptr)
         {
-            const auto regExp = QRegularExpression(QLatin1StringView("[%1].*").arg(fDialog.name()),
+            const auto regExp = QRegularExpression(QLatin1StringView("[%1]").arg(fDialog.name()),
                                                 QRegularExpression::CaseInsensitiveOption);
 
             nameProxyModel->setFilterRegularExpression(regExp);
@@ -114,7 +113,7 @@ void AddressWidget::findEntry()
 
         if(fDialog.address() != "" && fDialog.address() != nullptr)
         {
-            const auto regExp = QRegularExpression(QLatin1StringView("[%1].*").arg(fDialog.address()),
+            const auto regExp = QRegularExpression(QLatin1StringView("[%1]").arg(fDialog.address()),
                                                 QRegularExpression::CaseInsensitiveOption);
 
             addressProxyModel->setFilterRegularExpression(regExp);
@@ -125,7 +124,7 @@ void AddressWidget::findEntry()
 
         if(fDialog.email() != "" && fDialog.email() != nullptr)
         {
-            const auto regExp = QRegularExpression(QLatin1StringView("[%1].*").arg(fDialog.email()),
+            const auto regExp = QRegularExpression(QLatin1StringView("[%1]").arg(fDialog.email()),
                                                 QRegularExpression::CaseInsensitiveOption);
 
             emailProxyModel->setFilterRegularExpression(regExp);
@@ -150,10 +149,6 @@ void AddressWidget::findEntry()
        });
 
 
-//       if()
-//       {
-
-//       }
         addTab(tableView, tr("Search Result"));
         setCurrentWidget(tableView);
 

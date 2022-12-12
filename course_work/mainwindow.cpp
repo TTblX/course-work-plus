@@ -21,33 +21,39 @@ void MainWindow::createMenus()
     QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
 
     QAction *openAct = new QAction(tr("&Open..."), this);
+    openAct->setShortcut(QKeySequence::Open);
     fileMenu->addAction(openAct);
     connect(openAct, &QAction::triggered, this, &MainWindow::openFile);
 //! [1a]
 
     QAction *saveAct = new QAction(tr("&Save As..."), this);
+    saveAct->setShortcut(QKeySequence::Save);
     fileMenu->addAction(saveAct);
     connect(saveAct, &QAction::triggered, this, &MainWindow::saveFile);
 
     fileMenu->addSeparator();
 
     QAction *exitAct = new QAction(tr("E&xit"), this);
+    exitAct->setShortcut(QKeySequence::Close);
     fileMenu->addAction(exitAct);
     connect(exitAct, &QAction::triggered, this, &QWidget::close);
 
     QMenu *toolMenu = menuBar()->addMenu(tr("&Tools"));
 
-    QAction *addAct = new QAction(tr("&Add Entry..."), this);
+    QAction *addAct = new QAction(tr("&New Entry..."), this);
+    addAct->setShortcut(QKeySequence::New);
     toolMenu->addAction(addAct);
     connect(addAct, &QAction::triggered,
             addressWidget, &AddressWidget::showAddEntryDialog);
 
     QAction *findAct = new QAction(tr("&Find Entry..."), this);
+    findAct->setShortcut(QKeySequence::Find);
     toolMenu->addAction(findAct);
     connect(findAct, &QAction::triggered, addressWidget, &AddressWidget::findEntry);
 
 //! [1b]
     editAct = new QAction(tr("&Edit Entry..."), this);
+    editAct->setShortcut(QKeySequence(tr("Ctrl+E")));
     editAct->setEnabled(false);
     toolMenu->addAction(editAct);
     connect(editAct, &QAction::triggered, addressWidget, &AddressWidget::editEntry);    
@@ -55,6 +61,7 @@ void MainWindow::createMenus()
     toolMenu->addSeparator();
 
     removeAct = new QAction(tr("&Remove Entry"), this);
+    removeAct->setShortcut(QKeySequence::Delete);
     removeAct->setEnabled(false);
     toolMenu->addAction(removeAct);
     connect(removeAct, &QAction::triggered, addressWidget, &AddressWidget::removeEntry);
