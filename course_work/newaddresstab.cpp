@@ -1,5 +1,4 @@
 #include "newaddresstab.h"
-#include "adddialog.h"
 
 #include <QtWidgets>
 

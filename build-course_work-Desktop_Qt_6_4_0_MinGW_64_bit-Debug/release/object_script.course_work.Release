@@ -1,7 +1,7 @@
 release/adddialog.o
 release/addresswidget.o
 release/finddialog.o
-release/findtab.o
+release/list.o
 release/main.o
 release/mainwindow.o
 release/newaddresstab.o
@@ -9,7 +9,6 @@ release/tablemodel.o
 release/moc_adddialog.o
 release/moc_addresswidget.o
 release/moc_finddialog.o
-release/moc_findtab.o
 release/moc_mainwindow.o
 release/moc_newaddresstab.o
 release/moc_tablemodel.o

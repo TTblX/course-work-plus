@@ -1,9 +1,11 @@
 #ifndef TABLEMODEL_H
 #define TABLEMODEL_H
 
+#include "list.h"
+#include "list.cpp"
+
 #include <QAbstractTableModel>
-#include <QList>
-#include<QPixmap>
+#include <QPixMap>
 
 //! [0]
 
@@ -36,7 +38,7 @@ class TableModel : public QAbstractTableModel
 
 public:
     TableModel(QObject *parent = nullptr);
-    TableModel(const QList<Contact> &contacts, QObject *parent = nullptr);
+    TableModel(const List<Contact> &contacts, QObject *parent = nullptr);
 
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
@@ -46,10 +48,11 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
     bool insertRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;    
     bool removeRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;    
-    const QList<Contact> &getContacts() const;
+    const List<Contact> &getContacts() const;
 
 private:
-    QList<Contact> contacts;
+//    QList<Contact> contacts;
+    List<Contact> contacts;
 };
 //! [0]
 

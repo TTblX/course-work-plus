@@ -1,6 +1,8 @@
 #ifndef NEWADDRESSTAB_H
 #define NEWADDRESSTAB_H
 
+#include "adddialog.h"
+
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE

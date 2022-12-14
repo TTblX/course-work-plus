@@ -3,8 +3,6 @@
 
 #include "newaddresstab.h"
 #include "tablemodel.h"
-#include "finddialog.h"
-#include"findtab.h"
 
 #include <QItemSelection>
 #include <QTabWidget>
@@ -39,7 +37,6 @@ private:
 
     TableModel *table;
     NewAddressTab *newAddressTab;
-    FindTab* findTab;
 };
 //! [0]
 

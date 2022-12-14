@@ -12,17 +12,19 @@ SOURCES += \
     adddialog.cpp \
     addresswidget.cpp \
     finddialog.cpp \
-    findtab.cpp \
+    list.cpp \
     main.cpp \
     mainwindow.cpp \
     newaddresstab.cpp \
     tablemodel.cpp
 
 HEADERS += \
+    ../../../Downloads/Telegram Desktop/list.h \
     adddialog.h \
     addresswidget.h \
+    exception.h \
     finddialog.h \
-    findtab.h \
+    list.h \
     mainwindow.h \
     newaddresstab.h \
     tablemodel.h

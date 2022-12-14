@@ -2,11 +2,12 @@
 
 //! [0]
 TableModel::TableModel(QObject *parent)
-    : QAbstractTableModel(parent)
+    : QAbstractTableModel(parent),
+      contacts(List<Contact>())
 {
 }
 
-TableModel::TableModel(const QList<Contact> &contacts, QObject *parent)
+TableModel::TableModel(const List<Contact> &contacts, QObject *parent)
     : QAbstractTableModel(parent), contacts(contacts)
 {
 }
@@ -15,7 +16,7 @@ TableModel::TableModel(const QList<Contact> &contacts, QObject *parent)
 //! [1]
 int TableModel::rowCount(const QModelIndex &parent) const
 {
-    return parent.isValid() ? 0 : contacts.size();
+    return parent.isValid() ? 0 : contacts.Count();
 }
 
 int TableModel::columnCount(const QModelIndex &parent) const
@@ -30,7 +31,7 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if (index.row() >= contacts.size() || index.row() < 0)
+    if (index.row() >= contacts.Count() || index.row() < 0)
         return QVariant();
 
 //    if (role == Qt::DisplayRole) {
@@ -50,7 +51,7 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
 //        }
 //    }
 
-    const auto &contact = contacts.at(index.row());
+    const auto &contact = contacts.GetElement(index.row());
     QString filename = contact.picturePath;
 
     QPixmap pixmap ;
@@ -116,7 +117,7 @@ bool TableModel:: insertRows(int position, int rows, const QModelIndex &index)
     beginInsertRows(QModelIndex(), position, position + rows - 1);
 
     for (int row = 0; row < rows; ++row)
-        contacts.insert(position, { QString(), QString() , QString(), QString()});
+        contacts.Insert({ QString(), QString() , QString(), QString()}, position);
 
     endInsertRows();
     return true;
@@ -130,7 +131,7 @@ bool TableModel::removeRows(int position, int rows, const QModelIndex &index)
     beginRemoveRows(QModelIndex(), position, position + rows - 1);
 
     for (int row = 0; row < rows; ++row)
-        contacts.removeAt(position);
+        contacts.Del(position);
 
     endRemoveRows();
     return true;
@@ -142,7 +143,7 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
 {
     if (index.isValid() && role == Qt::EditRole) {
         const int row = index.row();
-        auto contact = contacts.value(row);
+        auto contact = contacts.GetElement(row);
 
         switch (index.column()) {
             case 0:
@@ -160,7 +161,7 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
             default:
                 return false;
         }
-        contacts.replace(row, contact);
+        contacts.SetElement(contact, row);
         emit dataChanged(index, index, {Qt::DisplayRole, Qt::EditRole, Qt::EditRole, Qt::EditRole});
 
         return true;
@@ -181,7 +182,7 @@ Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
 //! [7]
 
 //! [8]
-const QList<Contact> &TableModel::getContacts() const
+const List<Contact> &TableModel::getContacts() const
 {
     return contacts;
 }

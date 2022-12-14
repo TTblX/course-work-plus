@@ -1,4 +1,5 @@
-#include "addresswidget.h"
+#include"addresswidget.h"
+#include "finddialog.h"
 #include "adddialog.h"
 
 #include <QtWidgets>
@@ -7,8 +8,7 @@
 AddressWidget::AddressWidget(QWidget *parent)
     : QTabWidget(parent),
       table(new TableModel(this)),
-      newAddressTab(new NewAddressTab(this)),
-      findTab(new FindTab(this))
+      newAddressTab(new NewAddressTab(this))
 {
     connect(newAddressTab, &NewAddressTab::sendDetails,
         this, &AddressWidget::addEntry);
@@ -34,8 +34,8 @@ void AddressWidget::showAddEntryDialog()
 
 //! [3]
 void AddressWidget::addEntry(const QString &name, const QString &address, const QString &email, const QString &picturePath)
-{
-    if (!table->getContacts().contains({ name, address, email })) {
+{    
+    if (!table->getContacts().Contains({name, address, email, picturePath})) {
         table->insertRows(0, 1, QModelIndex());
 
         QModelIndex index = table->index(0, 0, QModelIndex());
@@ -49,10 +49,10 @@ void AddressWidget::addEntry(const QString &name, const QString &address, const 
 
         index = table->index(0, 3, QModelIndex());
         table->setData(index, picturePath, Qt::EditRole);
-//        if(indexOf(newAddressTab) == -1)
-//        {
+        if(indexOf(newAddressTab) != -1)
+        {
             removeTab(indexOf(newAddressTab));
-//        }
+        }
 
     } else {
         QMessageBox::information(this, tr("Duplicate Name"),
@@ -306,39 +306,39 @@ void AddressWidget::setupTabs()
 //! [7]
 void AddressWidget::readFromFile(const QString &fileName)
 {
-    QFile file(fileName);
+//    QFile file(fileName);
 
-    if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::information(this, tr("Unable to open file"),
-            file.errorString());
-        return;
-    }
+//    if (!file.open(QIODevice::ReadOnly)) {
+//        QMessageBox::information(this, tr("Unable to open file"),
+//            file.errorString());
+//        return;
+//    }
 
-    QList<Contact> contacts;
-    QDataStream in(&file);
-    in >> contacts;
+//    List<Contact> contacts;
+//    QDataStream in(&file);
+////    in >> contacts;
 
-    if (contacts.isEmpty()) {
-        QMessageBox::information(this, tr("No contacts in file"),
-                                 tr("The file you are attempting to open contains no contacts."));
-    } else {
-        for (const auto &contact: qAsConst(contacts))
-            addEntry(contact.name, contact.address, contact.email, contact.picturePath);
-    }
+//    if (contacts.isEmpty()) {
+//        QMessageBox::information(this, tr("No contacts in file"),
+//                                 tr("The file you are attempting to open contains no contacts."));
+//    } else {
+//        for (const auto &contact: qAsConst(contacts))
+//            addEntry(contact.name, contact.address, contact.email, contact.picturePath);
+//    }
 }
 //! [7]
 
 //! [6]
 void AddressWidget::writeToFile(const QString &fileName)
 {
-    QFile file(fileName);
+//    QFile file(fileName);
 
-    if (!file.open(QIODevice::WriteOnly)) {
-        QMessageBox::information(this, tr("Unable to open file"), file.errorString());
-        return;
-    }
+//    if (!file.open(QIODevice::WriteOnly)) {
+//        QMessageBox::information(this, tr("Unable to open file"), file.errorString());
+//        return;
+//    }
 
-    QDataStream out(&file);
-    out << table->getContacts();
+//    QDataStream out(&file);
+//    out << table->getContacts();
 }
 //! [6]
