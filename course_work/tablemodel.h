@@ -6,6 +6,8 @@
 
 #include <QAbstractTableModel>
 #include <QPixMap>
+#include <QString>
+#include <QJsonObject>
 
 //! [0]
 
@@ -20,17 +22,16 @@ struct Contact
     {
         return name == other.name && address == other.address && email == other.email && picturePath == other.picturePath;
     }
+
+    void toJson(QJsonObject &json) const
+    {
+        json["name"] = name;
+        json["address"] = address;
+        json["email"] = email;
+        json["picture path"] = picturePath;
+    }
 };
 
-inline QDataStream &operator<<(QDataStream &stream, const Contact &contact)
-{
-    return stream << contact.name << contact.address << contact.email << contact.picturePath;
-}
-
-inline QDataStream &operator>>(QDataStream &stream, Contact &contact)
-{
-    return stream >> contact.name >> contact.address >> contact.email >> contact.picturePath;
-}
 
 class TableModel : public QAbstractTableModel
 {

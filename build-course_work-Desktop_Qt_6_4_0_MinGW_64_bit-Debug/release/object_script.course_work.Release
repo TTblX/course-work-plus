@@ -1,7 +1,6 @@
 release/adddialog.o
 release/addresswidget.o
 release/finddialog.o
-release/list.o
 release/main.o
 release/mainwindow.o
 release/newaddresstab.o

@@ -1,7 +1,6 @@
 debug/adddialog.o
 debug/addresswidget.o
 debug/finddialog.o
-debug/list.o
 debug/main.o
 debug/mainwindow.o
 debug/newaddresstab.o

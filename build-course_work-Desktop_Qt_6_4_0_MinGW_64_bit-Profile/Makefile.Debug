@@ -433,6 +433,16 @@ debug/moc_addresswidget.cpp: ../course_work/addresswidget.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QAbstractTableModel \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/QPixMap \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/quuid.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QItemSelection \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtWidgets/QTabWidget \
@@ -732,6 +742,16 @@ debug/moc_mainwindow.cpp: ../course_work/mainwindow.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QAbstractTableModel \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/QPixMap \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/quuid.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QItemSelection \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtWidgets/QTabWidget \
@@ -996,6 +1016,17 @@ debug/moc_tablemodel.cpp: ../course_work/tablemodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/qpolygon.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/qregion.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qline.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/quuid.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.4.0/mingw_64/bin/moc.exe
 	C:\Qt\6.4.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/vanish/Desktop/курсач/build-course_work-Desktop_Qt_6_4_0_MinGW_64_bit-Profile/debug/moc_predefs.h -IC:/Qt/6.4.0/mingw_64/mkspecs/win32-g++ -IC:/Users/vanish/Desktop/курсач/course_work -IC:/Qt/6.4.0/mingw_64/include -IC:/Qt/6.4.0/mingw_64/include/QtWidgets -IC:/Qt/6.4.0/mingw_64/include/QtGui -IC:/Qt/6.4.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\course_work\tablemodel.h -o debug\moc_tablemodel.cpp
@@ -1673,6 +1704,16 @@ debug/addresswidget.o: ../course_work/addresswidget.cpp ../course_work/addresswi
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QAbstractTableModel \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/QPixMap \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/quuid.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QItemSelection \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtWidgets/QTabWidget \
@@ -1716,14 +1757,7 @@ debug/addresswidget.o: ../course_work/addresswidget.cpp ../course_work/addresswi
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qbuffer.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qbytearraymatcher.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qcache.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborarray.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborvalue.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborcommon.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qregularexpression.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/quuid.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qcbormap.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborstream.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborstreamreader.h \
@@ -1752,9 +1786,7 @@ debug/addresswidget.o: ../course_work/addresswidget.cpp ../course_work/addresswi
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QScopedPointer \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qjniobject.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonarray.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonvalue.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsondocument.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonobject.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qlibrary.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qlibraryinfo.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qversionnumber.h \
@@ -2689,6 +2721,16 @@ debug/main.o: ../course_work/main.cpp ../course_work/mainwindow.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QAbstractTableModel \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/QPixMap \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/quuid.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QItemSelection \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtWidgets/QTabWidget \
@@ -2716,7 +2758,6 @@ debug/main.o: ../course_work/main.cpp ../course_work/mainwindow.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qpromise.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/qguiapplication.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/qguiapplication_platform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\course_work\main.cpp
 
@@ -2870,6 +2911,16 @@ debug/mainwindow.o: ../course_work/mainwindow.cpp ../course_work/mainwindow.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QAbstractTableModel \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/QPixMap \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/quuid.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/QItemSelection \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtWidgets/QTabWidget \
@@ -2883,9 +2934,6 @@ debug/mainwindow.o: ../course_work/mainwindow.cpp ../course_work/mainwindow.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qfile.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qfiledevice.h \
 		C:/Qt/6.4.0/mingw_64/include/QtCore/qfileinfo.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.4.0/mingw_64/include/QtWidgets/QMenuBar \
 		C:/Qt/6.4.0/mingw_64/include/QtWidgets/qmenubar.h \
 		C:/Qt/6.4.0/mingw_64/include/QtWidgets/qmenu.h
@@ -3504,7 +3552,18 @@ debug/tablemodel.o: ../course_work/tablemodel.cpp ../course_work/tablemodel.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/qtransform.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/qpolygon.h \
 		C:/Qt/6.4.0/mingw_64/include/QtGui/qregion.h \
-		C:/Qt/6.4.0/mingw_64/include/QtCore/qline.h
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qline.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.4.0/mingw_64/include/QtCore/quuid.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\tablemodel.o ..\course_work\tablemodel.cpp
 
 debug/moc_adddialog.o: debug/moc_adddialog.cpp 

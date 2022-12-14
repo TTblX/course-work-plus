@@ -325,6 +325,38 @@ void AddressWidget::readFromFile(const QString &fileName)
 //        for (const auto &contact: qAsConst(contacts))
 //            addEntry(contact.name, contact.address, contact.email, contact.picturePath);
 //    }
+
+    QFile file( fileName );
+    if( file.open( QIODevice::ReadOnly ) )
+    {
+        QByteArray bytes = file.readAll();
+        file.close();
+
+        QJsonParseError jsonError;
+        QJsonDocument document = QJsonDocument::fromJson( bytes, &jsonError );
+        if( jsonError.error != QJsonParseError::NoError )
+        {
+            //cout << "fromJson failed: " << jsonError.errorString().toStdString() << endl;
+            return ;
+        }
+        if( document.isObject() )
+        {
+            QJsonArray jsonContacts = document.object().value("contacts").toArray();
+            for(int i = 0 ; i < jsonContacts.count() ; i++)
+            {
+//                Contact contact = fromJson(jsonContacts.at(i).toObject());
+                QJsonObject json = jsonContacts.at(i).toObject();
+                if(json.count() == 4 && json.contains("name") && json.contains("address") && json.contains("email") && json.contains("picture path"))
+                {
+                    if(json.value("name").isString() && json.value("address").isString() && json.value("email").isString() && json.value("picture path").isString())
+                    {
+                        addEntry(json.value("name").toString(), json.value("address").toString(), json.value("email").toString(), json.value("picture path").toString());
+
+                    }
+                }
+            }
+        }
+    }
 }
 //! [7]
 
@@ -340,5 +372,31 @@ void AddressWidget::writeToFile(const QString &fileName)
 
 //    QDataStream out(&file);
 //    out << table->getContacts();
+
+    QJsonArray contactsArray;
+    for (int i = 0; i < table->getContacts().Count(); i++)
+    {
+        QJsonObject jsonContact;
+        table->getContacts().GetElement(i).toJson(jsonContact);
+        contactsArray.append(jsonContact);
+    }
+
+    QJsonObject jsonContacts;
+    jsonContacts.insert("contacts", contactsArray);
+
+    QJsonDocument document;
+    document.setObject( jsonContacts);
+    QByteArray bytes = document.toJson( QJsonDocument::Indented );
+    QFile file( fileName );
+    if( file.open( QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate ) )
+    {
+        QTextStream iStream( &file );
+        iStream << bytes;
+        file.close();
+    }
+    else
+    {
+//        cout << "file open failed: " << path.toStdString() << endl;
+    }
 }
 //! [6]

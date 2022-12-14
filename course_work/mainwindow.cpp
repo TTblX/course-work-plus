@@ -74,7 +74,7 @@ void MainWindow::createMenus()
 //! [2]
 void MainWindow::openFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(this);
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open file"), tr(""), tr("(*.json)"));
     if (!fileName.isEmpty())
         addressWidget->readFromFile(fileName);
 }
@@ -83,7 +83,7 @@ void MainWindow::openFile()
 //! [3]
 void MainWindow::saveFile()
 {
-    QString fileName = QFileDialog::getSaveFileName(this);
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save file"), tr(""), tr("(*.json)"));
     if (!fileName.isEmpty())
         addressWidget->writeToFile(fileName);
 }
