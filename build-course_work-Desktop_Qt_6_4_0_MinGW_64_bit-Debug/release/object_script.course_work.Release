@@ -1,5 +1,6 @@
 release/adddialog.o
 release/addresswidget.o
+release/errordialog.o
 release/finddialog.o
 release/main.o
 release/mainwindow.o
@@ -7,6 +8,7 @@ release/newaddresstab.o
 release/tablemodel.o
 release/moc_adddialog.o
 release/moc_addresswidget.o
+release/moc_errordialog.o
 release/moc_finddialog.o
 release/moc_mainwindow.o
 release/moc_newaddresstab.o

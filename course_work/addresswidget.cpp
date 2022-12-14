@@ -1,6 +1,7 @@
 #include"addresswidget.h"
 #include "finddialog.h"
 #include "adddialog.h"
+#include "errordialog.h"
 
 #include <QtWidgets>
 
@@ -35,29 +36,41 @@ void AddressWidget::showAddEntryDialog()
 //! [3]
 void AddressWidget::addEntry(const QString &name, const QString &address, const QString &email, const QString &picturePath)
 {    
-    if (!table->getContacts().Contains({name, address, email, picturePath})) {
-        table->insertRows(0, 1, QModelIndex());
+    try {
+        if(name == QString() || address == QString() || email == QString() || picturePath == QString())
+            throw ArgumentException("each value of contact must not be zero\n");
 
-        QModelIndex index = table->index(0, 0, QModelIndex());
-        table->setData(index, name, Qt::EditRole);
+        if (!table->getContacts().Contains({name, address, email, picturePath})) {
+            table->insertRows(0, 1, QModelIndex());
 
-        index = table->index(0, 1, QModelIndex());
-        table->setData(index, address, Qt::EditRole);
+            QModelIndex index = table->index(0, 0, QModelIndex());
+            table->setData(index, name, Qt::EditRole);
 
-        index = table->index(0, 2, QModelIndex());
-        table->setData(index, email, Qt::EditRole);
+            index = table->index(0, 1, QModelIndex());
+            table->setData(index, address, Qt::EditRole);
 
-        index = table->index(0, 3, QModelIndex());
-        table->setData(index, picturePath, Qt::EditRole);
-        if(indexOf(newAddressTab) != -1)
-        {
-            removeTab(indexOf(newAddressTab));
+            index = table->index(0, 2, QModelIndex());
+            table->setData(index, email, Qt::EditRole);
+
+            index = table->index(0, 3, QModelIndex());
+            table->setData(index, picturePath, Qt::EditRole);
+            if(indexOf(newAddressTab) != -1)
+            {
+                removeTab(indexOf(newAddressTab));
+            }
+
+        } else {
+            QMessageBox::information(this, tr("Duplicate Name"),
+                tr("The name \"%1\" already exists.").arg(name));
         }
+    } catch (ArgumentException ex) {
+        qDebug() << "Error message: " << ex.what();
+        qDebug() << "Error code: " << ex.GetErrorCode();
 
-    } else {
-        QMessageBox::information(this, tr("Duplicate Name"),
-            tr("The name \"%1\" already exists.").arg(name));
+        ErrorDialog errorDialog(this, ex);
+        errorDialog.exec();
     }
+
 }
 //! [3]
 
@@ -388,15 +401,21 @@ void AddressWidget::writeToFile(const QString &fileName)
     document.setObject( jsonContacts);
     QByteArray bytes = document.toJson( QJsonDocument::Indented );
     QFile file( fileName );
-    if( file.open( QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate ) )
-    {
+
+    try {
+        if( !file.open( QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate ) )
+        {
+            throw Exception("Failed to open file\n");
+        }
         QTextStream iStream( &file );
         iStream << bytes;
         file.close();
-    }
-    else
-    {
-//        cout << "file open failed: " << path.toStdString() << endl;
+    } catch (Exception ex) {
+        qDebug() << "Error message: " << ex.what();
+        qDebug() << "Error code: " << ex.GetErrorCode();
+
+        ErrorDialog errorDialog(this, ex);
+        errorDialog.exec();
     }
 }
 //! [6]

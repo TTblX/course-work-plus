@@ -27,7 +27,7 @@ public:
     }
 
 private:
-    QString errorCode;
+    QString errorCode = "C0000";
     QString message;
 };
 

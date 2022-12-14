@@ -1,4 +1,5 @@
 #include "tablemodel.h"
+#include "errordialog.h"
 
 //! [0]
 TableModel::TableModel(QObject *parent)
@@ -28,28 +29,20 @@ int TableModel::columnCount(const QModelIndex &parent) const
 //! [2]
 QVariant TableModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
+    try {
+        if (!index.isValid())
+            throw IndexException("Invalid index while accesing data\n");
+
+        if (index.row() >= contacts.Count() || index.row() < 0)
+            throw IndexException("Invalid row in index\n");
+    } catch (IndexException ex) {
+        qDebug() << "Error message: " << ex.what();
+        qDebug() << "Error code: " << ex.GetErrorCode();
+
+        ErrorDialog errorDialog(nullptr, ex);
+        errorDialog.exec();
         return QVariant();
-
-    if (index.row() >= contacts.Count() || index.row() < 0)
-        return QVariant();
-
-//    if (role == Qt::DisplayRole) {
-//        const auto &contact = contacts.at(index.row());
-
-//        switch (index.column()) {
-//            case 0:
-//                return contact.name;
-//            case 1:
-//                return contact.address;
-//            case 2:
-//                return contact.email;
-//            case 3:
-//                return contact.picturePath;
-//            default:
-//                break;
-//        }
-//    }
+    }
 
     const auto &contact = contacts.GetElement(index.row());
     QString filename = contact.picturePath;
@@ -141,30 +134,52 @@ bool TableModel::removeRows(int position, int rows, const QModelIndex &index)
 //! [6]
 bool TableModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if (index.isValid() && role == Qt::EditRole) {
-        const int row = index.row();
-        auto contact = contacts.GetElement(row);
+    try {
+        if(!index.isValid())
+            throw IndexException("Invalid index while accesing data\n");
 
-        switch (index.column()) {
-            case 0:
-                contact.name = value.toString();
-                break;
-            case 1:
-                contact.address = value.toString();
-                break;
-            case 2:
-                contact.email = value.toString();
-                break;
-            case 3:
-                contact.picturePath = value.toString();
-                break;
-            default:
-                return false;
+        if(value.toString() == QString())
+            throw ArgumentException("each value of contact must not be zero\n");
+
+        if (role == Qt::EditRole) {
+            const int row = index.row();
+            auto contact = contacts.GetElement(row);
+
+            switch (index.column()) {
+                case 0:
+                    contact.name = value.toString();
+                    break;
+                case 1:
+                    contact.address = value.toString();
+                    break;
+                case 2:
+                    contact.email = value.toString();
+                    break;
+                case 3:
+                    contact.picturePath = value.toString();
+                    break;
+                default:
+                    return false;
+            }
+            contacts.SetElement(contact, row);
+            emit dataChanged(index, index, {Qt::DisplayRole, Qt::EditRole, Qt::EditRole, Qt::EditRole});
+
+            return true;
         }
-        contacts.SetElement(contact, row);
-        emit dataChanged(index, index, {Qt::DisplayRole, Qt::EditRole, Qt::EditRole, Qt::EditRole});
+    } catch (ArgumentException ex) {
+        qDebug() << "Error message: " << ex.what();
+        qDebug() << "Error code: " << ex.GetErrorCode();
 
-        return true;
+        ErrorDialog errorDialog(nullptr, ex);
+        errorDialog.exec();
+    }
+    catch (IndexException ex)
+    {
+        qDebug() << "Error message: " << ex.what();
+        qDebug() << "Error code: " << ex.GetErrorCode();
+
+        ErrorDialog errorDialog(nullptr, ex);
+        errorDialog.exec();
     }
 
     return false;

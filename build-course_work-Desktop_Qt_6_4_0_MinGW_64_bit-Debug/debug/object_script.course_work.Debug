@@ -1,5 +1,6 @@
 debug/adddialog.o
 debug/addresswidget.o
+debug/errordialog.o
 debug/finddialog.o
 debug/main.o
 debug/mainwindow.o
@@ -7,6 +8,7 @@ debug/newaddresstab.o
 debug/tablemodel.o
 debug/moc_adddialog.o
 debug/moc_addresswidget.o
+debug/moc_errordialog.o
 debug/moc_finddialog.o
 debug/moc_mainwindow.o
 debug/moc_newaddresstab.o

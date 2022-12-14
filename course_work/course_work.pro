@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     adddialog.cpp \
     addresswidget.cpp \
+    errordialog.cpp \
     finddialog.cpp \
     list.cpp \
     main.cpp \
@@ -22,6 +23,7 @@ HEADERS += \
     ../../../Downloads/Telegram Desktop/list.h \
     adddialog.h \
     addresswidget.h \
+    errordialog.h \
     exception.h \
     finddialog.h \
     list.h \
@@ -37,5 +39,4 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    classdiagram.qmodel
+DISTFILES +=
