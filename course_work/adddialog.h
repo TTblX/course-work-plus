@@ -10,7 +10,6 @@ class QTextEdit;
 class QLineEdit;
 QT_END_NAMESPACE
 
-//! [0]
 class AddDialog : public QDialog
 {
     Q_OBJECT
@@ -34,6 +33,5 @@ private:
 private slots:
     void addPicture();
 };
-//! [0]
 
 #endif // ADDDIALOG_H

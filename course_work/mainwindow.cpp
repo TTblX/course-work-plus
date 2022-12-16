@@ -4,7 +4,7 @@
 #include <QFileDialog>
 #include <QMenuBar>
 
-//! [0]
+
 MainWindow::MainWindow()
     : QMainWindow(),
       addressWidget(new AddressWidget)
@@ -13,9 +13,7 @@ MainWindow::MainWindow()
     createMenus();
     setWindowTitle(tr("Address Book"));
 }
-//! [0]
 
-//! [1a]
 void MainWindow::createMenus()
 {
     QMenu *fileMenu = menuBar()->addMenu(tr("&File"));
@@ -51,7 +49,6 @@ void MainWindow::createMenus()
     toolMenu->addAction(findAct);
     connect(findAct, &QAction::triggered, addressWidget, &AddressWidget::findEntry);
 
-//! [1b]
     editAct = new QAction(tr("&Edit Entry..."), this);
     editAct->setShortcut(QKeySequence(tr("Ctrl+E")));
     editAct->setEnabled(false);
@@ -69,27 +66,21 @@ void MainWindow::createMenus()
     connect(addressWidget, &AddressWidget::selectionChanged,
         this, &MainWindow::updateActions);
 }
-//! [1b]
 
-//! [2]
 void MainWindow::openFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open file"), tr(""), tr("(*.json)"));
     if (!fileName.isEmpty())
         addressWidget->readFromFile(fileName);
 }
-//! [2]
 
-//! [3]
 void MainWindow::saveFile()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save file"), tr(""), tr("(*.json)"));
     if (!fileName.isEmpty())
         addressWidget->writeToFile(fileName);
 }
-//! [3]
 
-//! [4]
 void MainWindow::updateActions(const QItemSelection &selection)
 {
     QModelIndexList indexes = selection.indexes();
@@ -102,4 +93,4 @@ void MainWindow::updateActions(const QItemSelection &selection)
         editAct->setEnabled(false);
     }
 }
-//! [4]
+

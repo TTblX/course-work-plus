@@ -1,4 +1,4 @@
-#ifndef ADDRESSWIDGET_H
+ #ifndef ADDRESSWIDGET_H
 #define ADDRESSWIDGET_H
 
 #include "newaddresstab.h"

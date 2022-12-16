@@ -12,9 +12,7 @@ TableModel::TableModel(const List<Contact> &contacts, QObject *parent)
     : QAbstractTableModel(parent), contacts(contacts)
 {
 }
-//! [0]
 
-//! [1]
 int TableModel::rowCount(const QModelIndex &parent) const
 {
     return parent.isValid() ? 0 : contacts.Count();
@@ -24,9 +22,7 @@ int TableModel::columnCount(const QModelIndex &parent) const
 {
     return parent.isValid() ? 0 : 4;
 }
-//! [1]
 
-//! [2]
 QVariant TableModel::data(const QModelIndex &index, int role) const
 {
     try {
@@ -77,9 +73,7 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
     }
     return QVariant();
 }
-//! [2]
 
-//! [3]
 QVariant TableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (role != Qt::DisplayRole)
@@ -101,9 +95,7 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
     }
     return QVariant();
 }
-//! [3]
 
-//! [4]
 bool TableModel:: insertRows(int position, int rows, const QModelIndex &index)
 {
     Q_UNUSED(index);
@@ -115,9 +107,7 @@ bool TableModel:: insertRows(int position, int rows, const QModelIndex &index)
     endInsertRows();
     return true;
 }
-//! [4]
 
-//! [5]
 bool TableModel::removeRows(int position, int rows, const QModelIndex &index)
 {
     Q_UNUSED(index);
@@ -129,9 +119,7 @@ bool TableModel::removeRows(int position, int rows, const QModelIndex &index)
     endRemoveRows();
     return true;
 }
-//! [5]
 
-//! [6]
 bool TableModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     try {
@@ -184,9 +172,7 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
 
     return false;
 }
-//! [6]
 
-//! [7]
 Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
@@ -194,11 +180,8 @@ Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
 
     return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
 }
-//! [7]
 
-//! [8]
 const List<Contact> &TableModel::getContacts() const
 {
     return contacts;
 }
-//! [8]

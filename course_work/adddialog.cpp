@@ -2,7 +2,6 @@
 
 #include <QtWidgets>
 
-//! [0]
 AddDialog::AddDialog(QWidget *parent)
     : QDialog(parent),
       nameText(new QLineEdit),
@@ -28,7 +27,6 @@ AddDialog::AddDialog(QWidget *parent)
     gLayout->addWidget(emailText, 2, 1);
 
     gLayout->addWidget(pictureButton, 3, 0);
-    //gLayout->addWidget(picture, 3, 1);
 
     auto buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(okButton);
@@ -82,4 +80,3 @@ void AddDialog::addPicture()
         picturePath = fileName;
     }
 }
-//! [0]

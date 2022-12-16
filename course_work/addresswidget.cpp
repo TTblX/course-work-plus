@@ -5,7 +5,6 @@
 
 #include <QtWidgets>
 
-//! [0]
 AddressWidget::AddressWidget(QWidget *parent)
     : QTabWidget(parent),
       table(new TableModel(this)),
@@ -21,9 +20,7 @@ AddressWidget::AddressWidget(QWidget *parent)
 
     setupTabs();
 }
-//! [0]
 
-//! [2]
 void AddressWidget::showAddEntryDialog()
 {
     AddDialog aDialog;
@@ -31,9 +28,7 @@ void AddressWidget::showAddEntryDialog()
     if (aDialog.exec())
         addEntry(aDialog.name(), aDialog.address(), aDialog.email(), aDialog.getPicturePath());
 }
-//! [2]
 
-//! [3]
 void AddressWidget::addEntry(const QString &name, const QString &address, const QString &email, const QString &picturePath)
 {    
     try {
@@ -72,7 +67,6 @@ void AddressWidget::addEntry(const QString &name, const QString &address, const 
     }
 
 }
-//! [3]
 
 void AddressWidget::findEntry()
 {
@@ -81,35 +75,6 @@ void AddressWidget::findEntry()
 
     if(fDialog.exec())
     {
-
-//        auto proxyModel = new QSortFilterProxyModel(this);
-//        proxyModel->setSourceModel(table);
-
-//        if(fDialog.name() != "" && fDialog.name() != nullptr)
-//        {
-//            const auto regExp1 = QRegularExpression(QLatin1StringView("^[%1].*").arg(fDialog.name()),
-//                                                            QRegularExpression::CaseInsensitiveOption);
-//            proxyModel->setFilterRegularExpression(regExp1);
-//            proxyModel->setFilterKeyColumn(0);
-//        }
-
-//        if(fDialog.address() != "" && fDialog.address() != nullptr)
-//        {
-//            const auto regExp2 = QRegularExpression(QLatin1StringView("^[%1].*").arg(fDialog.address()),
-//                                                            QRegularExpression::CaseInsensitiveOption);
-//            proxyModel->setFilterRegularExpression(regExp2);
-//            proxyModel->setFilterKeyColumn(1);
-//        }
-
-//        if(fDialog.email() != "" && fDialog.email() != nullptr)
-//        {
-//            const auto regExp3 = QRegularExpression(QLatin1StringView("^[%1].*").arg(fDialog.email()),
-//                                                            QRegularExpression::CaseInsensitiveOption);
-
-//            proxyModel->setFilterRegularExpression(regExp3);
-//            proxyModel->setFilterKeyColumn(2);
-//        }
-
         auto nameProxyModel = new QSortFilterProxyModel(this);
         nameProxyModel->setSourceModel(table);
         auto addressProxyModel = new QSortFilterProxyModel(this);
@@ -173,7 +138,6 @@ void AddressWidget::findEntry()
     }
 }
 
-//! [4a]
 void AddressWidget::editEntry()
 {
     QTableView *temp = static_cast<QTableView*>(currentWidget());
@@ -205,9 +169,7 @@ void AddressWidget::editEntry()
         QVariant varPicturePath= table->data(picturePathIndex, Qt::DisplayRole);
         picturePath = varPicturePath.toString();
     }
-//! [4a]
 
-//! [4b]
     AddDialog aDialog;
     aDialog.setWindowTitle(tr("Edit a Contact"));
     aDialog.editAddress(name, address, email, picturePath);
@@ -232,9 +194,7 @@ void AddressWidget::editEntry()
         }
     }
 }
-//! [4b]
 
-//! [5]
 void AddressWidget::removeEntry()
 {
     QTableView *temp = static_cast<QTableView*>(currentWidget());
@@ -251,43 +211,10 @@ void AddressWidget::removeEntry()
     if (table->rowCount(QModelIndex()) == 0)
         insertTab(0, newAddressTab, tr("Address Book"));
 }
-//! [5]
 
-//! [1]
 void AddressWidget::setupTabs()
 {
     using namespace Qt::StringLiterals;
-//    const auto groups = { "ABC"_L1, "DEF"_L1, "GHI"_L1, "JKL"_L1, "MNO"_L1, "PQR"_L1,
-//                          "STU"_L1, "VW"_L1, "XYZ"_L1 };
-
-//    for (QLatin1StringView str : groups) {
-//        const auto regExp = QRegularExpression(QLatin1StringView("^[%1].*").arg(str),
-//                                               QRegularExpression::CaseInsensitiveOption);
-
-//        auto proxyModel = new QSortFilterProxyModel(this);
-//        proxyModel->setSourceModel(table);
-//        proxyModel->setFilterRegularExpression(regExp);
-//        proxyModel->setFilterKeyColumn(0);
-
-//        QTableView *tableView = new QTableView;
-//        tableView->setModel(proxyModel);
-//        tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-//        tableView->horizontalHeader()->setStretchLastSection(true);
-//        tableView->verticalHeader()->hide();
-//        tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-//        tableView->setSelectionMode(QAbstractItemView::SingleSelection);
-//        tableView->setSortingEnabled(true);
-
-//        connect(tableView->selectionModel(), &QItemSelectionModel::selectionChanged,
-//                this, &AddressWidget::selectionChanged);
-
-//        connect(this, &QTabWidget::currentChanged, this, [this, tableView](int tabIndex) {
-//            if (widget(tabIndex) == tableView)
-//                emit selectionChanged(tableView->selectionModel()->selection());
-//        });
-
-//        addTab(tableView, str);
-//    }
 
     auto proxyModel = new QSortFilterProxyModel(this);
     proxyModel->setSourceModel(table);
@@ -314,31 +241,9 @@ void AddressWidget::setupTabs()
    addTab(tableView, "ALL");
    this->tabBar()->tabButton(1, QTabBar::RightSide)->resize(0,0);
 }
-//! [1]
 
-//! [7]
 void AddressWidget::readFromFile(const QString &fileName)
 {
-//    QFile file(fileName);
-
-//    if (!file.open(QIODevice::ReadOnly)) {
-//        QMessageBox::information(this, tr("Unable to open file"),
-//            file.errorString());
-//        return;
-//    }
-
-//    List<Contact> contacts;
-//    QDataStream in(&file);
-////    in >> contacts;
-
-//    if (contacts.isEmpty()) {
-//        QMessageBox::information(this, tr("No contacts in file"),
-//                                 tr("The file you are attempting to open contains no contacts."));
-//    } else {
-//        for (const auto &contact: qAsConst(contacts))
-//            addEntry(contact.name, contact.address, contact.email, contact.picturePath);
-//    }
-
     QFile file( fileName );
     if( file.open( QIODevice::ReadOnly ) )
     {
@@ -348,8 +253,7 @@ void AddressWidget::readFromFile(const QString &fileName)
         QJsonParseError jsonError;
         QJsonDocument document = QJsonDocument::fromJson( bytes, &jsonError );
         if( jsonError.error != QJsonParseError::NoError )
-        {
-            //cout << "fromJson failed: " << jsonError.errorString().toStdString() << endl;
+        {            
             return ;
         }
         if( document.isObject() )
@@ -357,7 +261,6 @@ void AddressWidget::readFromFile(const QString &fileName)
             QJsonArray jsonContacts = document.object().value("contacts").toArray();
             for(int i = 0 ; i < jsonContacts.count() ; i++)
             {
-//                Contact contact = fromJson(jsonContacts.at(i).toObject());
                 QJsonObject json = jsonContacts.at(i).toObject();
                 if(json.count() == 4 && json.contains("name") && json.contains("address") && json.contains("email") && json.contains("picture path"))
                 {
@@ -371,21 +274,9 @@ void AddressWidget::readFromFile(const QString &fileName)
         }
     }
 }
-//! [7]
 
-//! [6]
 void AddressWidget::writeToFile(const QString &fileName)
 {
-//    QFile file(fileName);
-
-//    if (!file.open(QIODevice::WriteOnly)) {
-//        QMessageBox::information(this, tr("Unable to open file"), file.errorString());
-//        return;
-//    }
-
-//    QDataStream out(&file);
-//    out << table->getContacts();
-
     QJsonArray contactsArray;
     for (int i = 0; i < table->getContacts().Count(); i++)
     {
@@ -418,4 +309,4 @@ void AddressWidget::writeToFile(const QString &fileName)
         errorDialog.exec();
     }
 }
-//! [6]
+

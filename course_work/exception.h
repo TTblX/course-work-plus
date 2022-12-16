@@ -43,22 +43,10 @@ public:
 
 };
 
-class DataBaseException : public Exception
-{
-private:
-    QString errorCode = "C0002";
-public:
-    DataBaseException(QString msg) : Exception(msg)
-    {
-        Exception::SetErrorCode(errorCode);
-    }
-
-};
-
 class MemoryException : public Exception
 {
 private:
-    QString errorCode = "C0003";
+    QString errorCode = "C0002";
 public:
     MemoryException(QString msg) : Exception(msg)
     {
@@ -70,7 +58,7 @@ public:
 class IndexException : public Exception
 {
 private:
-    QString errorCode = "C0004";
+    QString errorCode = "C0003";
 public:
     IndexException(QString msg) : Exception(msg)
     {
@@ -82,7 +70,7 @@ public:
 class EmptyListException : public Exception
 {
 private:
-    QString errorCode = "C0005";
+    QString errorCode = "C0004";
 public:
     EmptyListException(QString msg) : Exception(msg)
     {

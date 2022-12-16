@@ -9,8 +9,6 @@
 #include <QString>
 #include <QJsonObject>
 
-//! [0]
-
 struct Contact
 {
     QString name;
@@ -52,9 +50,7 @@ public:
     const List<Contact> &getContacts() const;
 
 private:
-//    QList<Contact> contacts;
     List<Contact> contacts;
 };
-//! [0]
 
 #endif // TABLEMODEL_H
